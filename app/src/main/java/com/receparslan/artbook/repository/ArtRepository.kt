@@ -11,7 +11,8 @@ import javax.inject.Inject
 
 class ArtRepository
 @Inject
-constructor(artDatabase: ArtDatabase, private val artApiService: ArtApiService) : ArtRepositoryInterface {
+constructor(artDatabase: ArtDatabase, private val artApiService: ArtApiService) :
+    ArtRepositoryInterface {
 
     private val artDao: ArtDao = artDatabase.artDao()
 

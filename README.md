@@ -1,4 +1,4 @@
-# Art Book
+# Art Book 2 (Android • Kotlin • Hilt)
 
 An Android app to collect and manage artworks with image search, built using Kotlin, MVVM, Hilt, Room, Retrofit, Glide, and Navigation Component. Search artwork images via the Pixabay API, save entries locally, and manage them with swipe-to-delete.
 
@@ -51,7 +51,8 @@ app/
 ```
 
 ## Key Files
-- `util/Constant.kt`: `BASE_URL` and demo `API_KEY` for Pixabay
+- `util/Constant.kt`: `BASE_URL` for Pixabay
+- `app/build.gradle.kts`: injects `BuildConfig.API_KEY` from `local.properties` (debug build)
 - `apiService/ArtApiService.kt`: Retrofit endpoint for image search
 - `repository/ArtRepository.kt`: Merges local DB and remote search
 - `database/ArtDatabase.kt`, `database/ArtDao.kt`: Room setup
@@ -76,6 +77,27 @@ app/
 ```
 APK output: `app/build/outputs/apk/debug/`
 
+## API Key (Pixabay)
+This app uses the Pixabay API for image search. You need a free API key.
+
+- Get a key: https://pixabay.com/api/docs/
+- Add it to `local.properties` at the project root as `API_KEY`. The Gradle script reads this and exposes it as `BuildConfig.API_KEY` for the debug build, which `ArtApiService` uses by default.
+
+Add or update your key (Windows PowerShell):
+
+```pwsh
+# From project root
+if (Test-Path .\local.properties) {
+  Add-Content -Path .\local.properties -Value 'API_KEY=YOUR_PIXABAY_API_KEY'
+} else {
+  Set-Content -Path .\local.properties -Value 'API_KEY=YOUR_PIXABAY_API_KEY'
+}
+```
+
+Notes:
+- Do not commit real API keys. `local.properties` should remain local-only.
+- The key is currently wired for the `debug` buildType. If you need it in `release`, add a corresponding `buildConfigField` in `release` inside `app/build.gradle.kts`.
+
 ### Tests
 - Unit tests:
 ```pwsh
@@ -85,9 +107,6 @@ APK output: `app/build/outputs/apk/debug/`
 ```pwsh
 .\gradlew.bat connectedDebugAndroidTest
 ```
-
-## API Key
-The project includes a demo Pixabay API key in `util/Constant.kt`. For production or stricter security, replace it with your own key and consider moving secrets out of source (e.g., `local.properties` + build config fields).
 
 ## License
 This project is licensed under the MIT License. See [`LICENSE`](LICENSE).
