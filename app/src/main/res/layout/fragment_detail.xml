@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".view.DetailFragment">
+
+    <ImageView
+        android:id="@+id/artImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="4"
+        android:layout_columnWeight="1"
+        android:layout_margin="4dp"
+        android:contentDescription="@string/art_image"
+        android:scaleType="fitCenter"
+        android:src="@drawable/select_an_image" />
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="4dp"
+        android:autofillHints="Art Name"
+        android:ems="8"
+        android:hint="@string/enter_art_name"
+        android:inputType="textAutoCorrect"
+        android:textColor="@color/black"
+        android:textSize="32sp" />
+
+    <EditText
+        android:id="@+id/artistEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="4dp"
+        android:autofillHints="Artist Name"
+        android:ems="8"
+        android:hint="@string/enter_artist_name"
+        android:inputType="textAutoCorrect"
+        android:textColor="@color/black"
+        android:textSize="32sp" />
+
+    <EditText
+        android:id="@+id/yearEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_margin="4dp"
+        android:autofillHints="Art Year"
+        android:ems="8"
+        android:hint="@string/enter_art_year"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:text="@string/save"
+        android:textSize="32sp" />
+
+</GridLayout>
